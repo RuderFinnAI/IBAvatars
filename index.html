@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Walter Avatar Page</title>
 </head>
-<body>
-  <h1>Walter Avatar Page</h1>
-  <p>This page hosts the interactive HeyGen avatar.</p>
-
+<body style="margin: 0; padding: 0; overflow: hidden;">
   <script>
     !function(window){
       const host = "https://labs.heygen.com";
       const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI5OGI2MjRhNzc4YjQ0Mjk2YWUwNmM2YzU3%0D%0ANjI1OGY2OCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0D%0ALzk4YjYyNGE3NzhiNDQyOTZhZTA2YzZjNTc2MjU4ZjY4L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0D%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU2%0D%0ANzE2MGU5OGVjMTRkYzE4MmVkYmNiYjNmYzlkNTU1IiwidXNlcm5hbWUiOiI2MzkyNmI0NGVlZGU0%0D%0AMzg3YmZhYTI0ZTE5MzA3NDNhZCJ9&inIFrame=1";
 
-      const clientWidth = document.body.clientWidth;
       const wrapDiv = document.createElement("div");
       wrapDiv.id = "heygen-streaming-embed";
 
@@ -23,30 +19,6 @@
 
       const stylesheet = document.createElement("style");
       stylesheet.innerHTML = `
-        #heygen-streaming-embed {
-          z-index: 9999;
-          position: fixed;
-          left: 40px;
-          bottom: 40px;
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          border: 2px solid #fff;
-          box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);
-          transition: all linear 0.1s;
-          overflow: hidden;
-          opacity: 0;
-          visibility: hidden;
-        }
-        #heygen-streaming-embed.show {
-          opacity: 1;
-          visibility: visible;
-        }
-        #heygen-streaming-embed.expand {
-          ${clientWidth < 540 ? "height: 266px; width: 96%; left: 50%; transform: translateX(-50%);" : "height: 366px; width: calc(366px * 16 / 9);"}
-          border: 0;
-          border-radius: 8px;
-        }
         #heygen-streaming-container {
           width: 100%;
           height: 100%;
@@ -65,32 +37,29 @@
       iframe.allow = "microphone";
       iframe.src = url;
 
-      let visible = false;
-      let initial = false;
-
-      window.addEventListener("message", (e) => {
-        if (e.origin === host && e.data && e.data.type === "streaming-embed") {
-          if (e.data.action === "init") {
-            initial = true;
-            wrapDiv.classList.toggle("show", initial);
-          } else if (e.data.action === "show") {
-            visible = true;
-            wrapDiv.classList.toggle("expand", visible);
-          } else if (e.data.action === "hide") {
-            visible = false;
-            wrapDiv.classList.toggle("expand", visible);
-          }
-        }
-      });
-
-      // Force it to be visible just in case
-      wrapDiv.classList.add("show");
-      wrapDiv.classList.add("expand");
-
       container.appendChild(iframe);
       wrapDiv.appendChild(stylesheet);
       wrapDiv.appendChild(container);
       document.body.appendChild(wrapDiv);
+
+      // Fullscreen styling
+      wrapDiv.style.position = "fixed";
+      wrapDiv.style.top = "0";
+      wrapDiv.style.left = "0";
+      wrapDiv.style.width = "100vw";
+      wrapDiv.style.height = "100vh";
+      wrapDiv.style.border = "none";
+      wrapDiv.style.borderRadius = "0";
+      wrapDiv.style.boxShadow = "none";
+      wrapDiv.style.zIndex = "9999";
+
+      window.addEventListener("message", (e) => {
+        if (e.origin === host && e.data && e.data.type === "streaming-embed") {
+          if (e.data.action === "init") {
+            wrapDiv.classList.add("show");
+          }
+        }
+      });
     }(globalThis);
   </script>
 </body>
