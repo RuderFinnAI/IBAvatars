@@ -24,15 +24,16 @@
 <body>
   <script>
     !function(window){
-      const host = "https://labs.heygen.com",
-            url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI4YzFmNTQyODUyZDY0NzFlYjJkNTEwNWI2NmNjNTA5NCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzhjMWY1NDI4NTJkNjQ3MWViMmQ1MTA1YjY2Y2M1MDk0L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImEwNjk1MzY0MDI4NzRiZTE4Zjk1NmU0MTY0YWJhYjg0IiwidXNlcm5hbWUiOiI2MzkyNmI0NGVlZGU0Mzg3YmZhYTI0ZTE5MzA3NDNhZCJ9&inIFrame=1",
-            wrapDiv = document.createElement("div"),
-            container = document.createElement("div"),
-            stylesheet = document.createElement("style"),
-            iframe = document.createElement("iframe");
+      const host = "https://labs.heygen.com";
+      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI4YzFmNTQyODUyZDY0NzFlYjJkNTEwNWI2NmNjNTA5NCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzhjMWY1NDI4NTJkNjQ3MWViMmQ1MTA1YjY2Y2M1MDk0L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImEwNjk1MzY0MDI4NzRiZTE4Zjk1NmU0MTY0YWJhYjg0IiwidXNlcm5hbWUiOiI2MzkyNmI0NGVlZGU0Mzg3YmZhYTI0ZTE5MzA3NDNhZCJ9&inIFrame=1";
 
+      const wrapDiv = document.createElement("div");
       wrapDiv.id = "heygen-streaming-embed";
+
+      const container = document.createElement("div");
       container.id = "heygen-streaming-container";
+
+      const stylesheet = document.createElement("style");
       stylesheet.innerHTML = `
         #heygen-streaming-container {
           width: 100%;
@@ -44,6 +45,8 @@
           border: 0;
         }
       `;
+
+      const iframe = document.createElement("iframe");
       iframe.allowFullscreen = true;
       iframe.title = "Streaming Embed";
       iframe.role = "dialog";
