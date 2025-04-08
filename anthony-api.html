@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anthony - API Avatar</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
+    #avatar-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="avatar-container"></div>
+
+  <script type="module">
+    import { StreamingAvatar } from "https://cdn.jsdelivr.net/npm/@heygen/streaming-avatar-sdk/+esm";
+
+    const avatar = new StreamingAvatar({
+      apiKey: "NjM5MjZiNDRlZWRlNDM4N2JmYWEyNGUxOTMwNzQzYWQtMTc0MjMyNjcxNQ==", // ← Paste your real API key here
+      avatarId: "8c1f542852d6471eb2d5105b66cc5094", // ← Anthony’s ID
+      container: document.getElementById("avatar-container"),
+      quality: "high", // can be 'low', 'medium', or 'high'
+      onReady: () => {
+        avatar.start(); // Begins streaming
+      },
+      onError: (err) => {
+        console.error("Avatar error:", err);
+      }
+    });
+  </script>
+</body>
+</html>
