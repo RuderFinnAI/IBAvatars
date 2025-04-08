@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anthony - Interactive Avatar</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      font-family: sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anthony – Live Avatar</title>
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 30px;
+      }
+      #launchBtn {
+        background-color: #4f46e5;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Anthony Avatar Page</h1>
+    <p>This page hosts the interactive HeyGen avatar for Anthony.</p>
+    <button id="launchBtn">Launch Avatar</button>
 
-    #heygen-streaming-embed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 9999;
-      overflow: hidden;
-      border: none;
-    }
+    <script>
+      document.getElementById("launchBtn").addEventListener("click", function () {
+        const host = "https://labs.heygen.com";
+        const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRh..."; // ✅ Replace with Anthony's actual share link
+        const clientWidth = document.body.clientWidth;
 
-    #heygen-streaming-container {
-      width: 100%;
-      height: 100%;
-    }
+        const wrapDiv = document.createElement("div");
+        wrapDiv.id = "heygen-streaming-embed";
 
-    #heygen-streaming-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-  </style>
-</head>
-<body>
-  <script>
-    !function(window){
-      const host = "https://labs.heygen.com";
-      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI4YzFmNTQyODUyZDY0NzFlYjJkNTEwNWI2%0D%0ANmNjNTA5NCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0D%0ALzhjMWY1NDI4NTJkNjQ3MWViMmQ1MTA1YjY2Y2M1MDk0L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0D%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmF
+        const container = document.createElement("div");
+        container.id = "heygen-streaming-container";
+
+        const stylesheet = document.createElement("style");
+        stylesheet.innerHTML = `
+          #heygen-streaming-embed {
+            z-index: 9999;
+            position: fixed;
+            left: 40px;
+            bottom: 40px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+            transition: all linear 0.1s;
+            overflow: hidden;
+            opacity
