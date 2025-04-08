@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anthony – Live Avatar</title>
-    <style>
-      body {
-        margin: 0;
-        background: #000;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding-top: 30px;
-      }
-      #launchBtn {
-        background-color: #4f46e5;
-        color: white;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 40px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Anthony Avatar Page</h1>
-    <p>This page hosts the interactive HeyGen avatar for Anthony.</p>
-    <button id="launchBtn">Launch Avatar</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anthony Avatar Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
 
-    <script>
-      document.getElementById("launchBtn").addEventListener("click", function () {
-        const host = "https://labs.heygen.com";
-        const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRh..."; // ✅ Replace with Anthony's actual share link
-        const clientWidth = document.body.clientWidth;
+    h1 {
+      font-size: 2em;
+    }
 
-        const wrapDiv = document.createElement("div");
-        wrapDiv.id = "heygen-streaming-embed";
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
 
-        const container = document.createElement("div");
-        container.id = "heygen-streaming-container";
+    button {
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #5c4fff;
+      border: 2px solid white;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-        const stylesheet = document.createElement("style");
-        stylesheet.innerHTML = `
-          #heygen-streaming-embed {
-            z-index: 9999;
-            position: fixed;
-            left: 40px;
-            bottom: 40px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
-            transition: all linear 0.1s;
-            overflow: hidden;
-            opacity
+    button:hover {
+      background-color: #4a3ce2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anthony Avatar Page</h1>
+  <p>This page hosts the interactive HeyGen avatar for Anthony.</p>
+  <button onclick="launchAvatar()">Launch Avatar</button>
+
+  <script>
+    function launchAvatar() {
+      const host = "https://labs.heygen.com";
+      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI4YzFmNTQyODUyZDY0NzFlYjJkNTEwNWI2%0D%0ANmNjNTA5NCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0D%0ALzhjMWY1NDI4NTJkNjQ3MWViMmQ1MTA1YjY2Y2M1MDk0L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0D%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImEw%0D%0ANjk1MzY0MDI4NzRiZTE4Zjk1Nm
