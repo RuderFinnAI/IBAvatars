@@ -8,24 +8,23 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
       width: 100vw;
+      height: 100vh;
       background: url('250409_IB_AI_AVATAR_MICHAEL_16x9_02.png') no-repeat center center;
       background-size: cover;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      overflow: hidden;
     }
 
     #heygen-streaming-embed {
-      width: 700px;
-      height: 700px;
+      width: 720px;
+      height: 720px;
       margin-right: 60px;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.3);
-      background-color: white;
+      background-color: #000; /* fallback in case iframe has loading issues */
     }
 
     #heygen-streaming-container {
@@ -41,6 +40,8 @@
   </style>
 </head>
 <body>
+  <div style="flex: 1;"></div> <!-- Placeholder for spacing on the left -->
+  
   <div id="heygen-streaming-embed">
     <div id="heygen-streaming-container"></div>
   </div>
@@ -48,14 +49,4 @@
   <script>
     !function(window){
       const host = "https://labs.heygen.com";
-      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRh..."; // use your full link here
-
-      const container = document.getElementById("heygen-streaming-container");
-      const iframe = document.createElement("iframe");
-      iframe.src = url;
-
-      container.appendChild(iframe);
-    }(globalThis);
-  </script>
-</body>
-</html>
+      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI5OGI2MjRhNzc4YjQ0Mjk2YWUwNmM2YzU3NjI1OGY2OCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzk4YjYyNGE3NzhiNDQyOTZhZTA2YzZjNTc2MjU4ZjY4L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJu
