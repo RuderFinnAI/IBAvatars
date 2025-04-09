@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Michael Avatar</title>
   <style>
     body {
@@ -12,26 +12,46 @@
       background: url('250409_IB_AI_AVATAR_BG_16x9_02.png') no-repeat center center;
       background-size: cover;
       overflow: hidden;
+      position: relative;
     }
 
-    /* Override the default size and placement from the embed script */
-    #heygen-streaming-embed.expand {
-      position: absolute !important;
-      top: 50% !important;
-      right: 5% !important;
-      transform: translateY(-50%) !important;
-      width: 500px !important;
-      height: 888px !important;
-      border-radius: 12px !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-      z-index: 10 !important;
+    #heygen-streaming-embed {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 50vw;
+      height: 100vh;
+      z-index: 100;
+      overflow: hidden;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #heygen-streaming-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    #heygen-streaming-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
+  <div id="heygen-streaming-embed">
+    <div id="heygen-streaming-container"></div>
+  </div>
 
-<!-- Heygen Embed Script -->
-<script>
-!function(window){
-  const host = "https://labs.heygen.com",
-        url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI5OGI2MjRhNzc4YjQ0Mjk2YWUwNmM2YzU3NjI1OGY2OCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzk4YjYyNGE3NzhiNDQyOTZhZTA2YzZjNTc2MjU4ZjY4L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU2NzE2MGU5OGVjMTRkYzE4MmVkYmNi
+  <script>
+    !function(window){
+      const host = "https://labs.heygen.com";
+      const url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI5OGI2MjRhNzc4YjQ0Mjk2YWUwNmM2YzU3NjI1OGY2OCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzk4YjYyNGE3NzhiNDQyOTZhZTA2YzZjNTc2MjU4ZjY4L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU2NzE2MGU5OGVjMTRkYzE4MmVkYmNiYjNmYzlkNTU1IiwidXNlcm5hbWUiOiI2MzkyNmI0NGVlZGU0Mzg3YmZhYTI0ZTE5MzA3NDNhZCJ9&inIFrame=1";
+      const container = document.getElementById("heygen-streaming-container");
+
+      const iframe = document.createElement("iframe");
+      iframe.src = url
