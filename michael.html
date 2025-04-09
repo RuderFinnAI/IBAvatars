@@ -13,27 +13,25 @@
       background-size: cover;
       overflow: hidden;
     }
-    #heygen-avatar {
-      position: absolute;
-      top: 50%;
-      right: 5%;
-      transform: translateY(-50%);
-      width: 500px;
-      height: 888px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      z-index: 10;
+
+    /* Override the default size and placement from the embed script */
+    #heygen-streaming-embed.expand {
+      position: absolute !important;
+      top: 50% !important;
+      right: 5% !important;
+      transform: translateY(-50%) !important;
+      width: 500px !important;
+      height: 888px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+      z-index: 10 !important;
     }
   </style>
 </head>
 <body>
-  <iframe 
-    id="heygen-avatar"
-    title="Michael Interactive Avatar"
-    src="https://labs.heygen.com/guest/streaming-embed?share=YOUR_HEYGEN_EMBED_LINK_HERE&inIFrame=1"
-    allow="microphone"
-    allowfullscreen
-  ></iframe>
-</body>
-</html>
+
+<!-- Heygen Embed Script -->
+<script>
+!function(window){
+  const host = "https://labs.heygen.com",
+        url = host + "/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI5OGI2MjRhNzc4YjQ0Mjk2YWUwNmM2YzU3NjI1OGY2OCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzk4YjYyNGE3NzhiNDQyOTZhZTA2YzZjNTc2MjU4ZjY4L2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU2NzE2MGU5OGVjMTRkYzE4MmVkYmNi
