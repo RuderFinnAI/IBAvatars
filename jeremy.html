@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updated Avatar</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      background: url('250410_IB_AI_AVATAR_MICHAEL_16x9_02.png') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    #heygen-streaming-embed {
+      width: 640px;
+      height: 720px;
+      margin-right: 60px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.3);
+      background-color: #000;
+    }
+
+    #heygen-streaming-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    #heygen-streaming-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="heygen-streaming-embed">
+    <div id="heygen-streaming-container"></div>
+  </div>
+
+  <script>
+    !function(window){
+      const host="https://labs.heygen.com",url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiI2MDA0OWNiY2ZmZTY0NjM2OGYwOWFmZDUyMzI0YjQ5ZCIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzYwMDQ5Y2JjZmZlNjQ2MzY4ZjA5YWZkNTIzMjRiNDlkL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU2NzE2MGU5OGVjMTRkYzE4MmVkYmNiYjNmYzlkNTU1IiwidXNlcm5hbWUiOiI2MzkyNmI0NGVlZGU0Mzg3YmZhYTI0ZTE5MzA3NDNhZCJ9&inIFrame=1";
+
+      const container = document.getElementById("heygen-streaming-container");
+      const iframe = document.createElement("iframe");
+      iframe.src = url;
+      iframe.allow = "microphone";
+      iframe.allowFullscreen = false;
+      iframe.title = "Streaming Embed";
+      iframe.role = "dialog";
+
+      container.appendChild(iframe);
+    }(globalThis);
+  </script>
+</body>
+</html>
